@@ -1,4 +1,3 @@
-# Snat's Reference Widget
-WordPress Widget - Displays a reference via the Harvard standard.
+# Snat's WordPress Plugins
 
-Just releasing some widget and plugins I have created for my personal websites in case anyone else find them useful.
+In this repo you can find a bunch of plugins I have made for my own websites that I have decided to make public just in case it is useful for anyone else.
