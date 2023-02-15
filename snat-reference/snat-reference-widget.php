@@ -18,6 +18,9 @@ class Reference_Widget extends WP_Widget {
 
     // Widget output function
     public function widget($args, $instance) {
+        if (is_home() || is_tag() || is_category()) {
+            return;
+        }
         $author_id = get_the_author_meta('ID');
         $first_name = get_the_author_meta('first_name', $author_id);
         $first_initial = substr($first_name, 0, 1);
