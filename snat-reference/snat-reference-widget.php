@@ -2,7 +2,7 @@
 /*
 Plugin Name: Snat's Reference Widget
 Description: Displays a reference via the Harvard standard.
-Version: 1.0
+Stable tag: 1.0.1
 Author: <a href="https://snat.co.uk/">Snat</a>
 */
 
@@ -35,9 +35,9 @@ class Reference_Widget extends WP_Widget {
         if (!empty($instance['title'])) {
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
-        echo "<p>";
-        echo "$last_name, $first_initial. ($publish_date). <em>$article_title</em>. [online] $site_name. Available at: $post_link [Accessed $view_date].";
-        echo "</p>";
+        echo wp_kses_post("<p>");
+        echo wp_kses_post("$last_name, $first_initial. ($publish_date). <em>$article_title</em>. [online] $site_name. Available at: $post_link [Accessed $view_date].");
+        echo wp_kses_post("</p>");
         echo $args['after_widget'];
     }
 
