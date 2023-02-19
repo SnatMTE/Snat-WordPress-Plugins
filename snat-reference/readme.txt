@@ -23,4 +23,7 @@ Displays a reference via the Harvard standard.
 This isn\'t set up to show a username or organisation. Make sure your authors have a first name and last name set up. I might change it in future toa allow you to put an organisation or at least the username.
 
 == Changelog ==
-1.0 - Initial release
+
+1.0.1 - Fixed to WordPress coding standards.
+
+1.0 - Initial release.
