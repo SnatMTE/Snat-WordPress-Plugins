@@ -1,19 +1,21 @@
 <?php
 /*
-Plugin Name: Snat's Reference Widget
-Description: Displays a reference via the Harvard standard.
-Stable tag: 1.0.1
-Author: <a href="https://snat.co.uk/">Snat</a>
+    Plugin Name: Snat's Reference Widget
+    Plugin URI: https://github.com/SnatMTE/Snat-WordPress-Plugins/tree/main/snat-reference
+    Description: Displays a reference via the Harvard standard.
+    Version: 1.0.2
+    Author: <a href="https://snat.co.uk/">Snat</a>
+    Author URI: https://snat.co.uk/
 */
 
-class Reference_Widget extends WP_Widget {
+class snat_reference_Widget extends WP_Widget {
     // Constructor function
     public function __construct() {
         $widget_options = array(
-            'classname' => 'reference_widget',
+            'classname' => 'snat_reference_widget',
             'description' => 'Displays the current article as a reference.'
         );
-        parent::__construct('reference_widget', 'Snat\'s Reference Widget', $widget_options);
+        parent::__construct('snat_reference_widget', 'Snat\'s Reference Widget', $widget_options);
     }
 
     // Widget output function
@@ -35,6 +37,7 @@ class Reference_Widget extends WP_Widget {
         if (!empty($instance['title'])) {
             echo $args['before_title'] . apply_filters('widget_title', $instance['title']) . $args['after_title'];
         }
+        
         echo wp_kses_post("<p>");
         echo wp_kses_post("$last_name, $first_initial. ($publish_date). <em>$article_title</em>. [online] $site_name. Available at: $post_link [Accessed $view_date].");
         echo wp_kses_post("</p>");
@@ -61,7 +64,7 @@ class Reference_Widget extends WP_Widget {
 }
 
 // Register the widget
-function register_reference_widget() {
-    register_widget('Reference_Widget');
+function snat_reference_register_widget() {
+    register_widget('snat_reference_Widget');
 }
-add_action('widgets_init', 'register_reference_widget');
+add_action('widgets_init', 'snat_reference_register_widget');
