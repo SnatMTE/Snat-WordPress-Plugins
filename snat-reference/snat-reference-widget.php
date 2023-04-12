@@ -3,7 +3,7 @@
     Plugin Name: Snat's Reference Widget
     Plugin URI: https://github.com/SnatMTE/Snat-WordPress-Plugins/tree/main/snat-reference
     Description: Displays a reference via the Harvard standard.
-    Version: 1.0.2
+    Version: 1.0.3
     Author: <a href="https://snat.co.uk/">Snat</a>
     Author URI: https://snat.co.uk/
 */
@@ -44,18 +44,25 @@ class snat_reference_Widget extends WP_Widget {
         echo $args['after_widget'];
     }
 
-    // Widget form function
-    public function form($instance) {
-        $title = !empty($instance['title']) ? $instance['title'] : '';
-        ?>
-        <p>
-            <label for="<?php echo $this->get_field_id('title'); ?>">Title:</label>
-            <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo esc_attr($title); ?>">
-        </p>
-        <?php
+// Widget Backend
+    public function form( $instance ) {
+        if ( isset( $instance[ 'title' ] ) ) {
+            $title = $instance[ 'title' ];
+        }
+        else {
+            $title = __( 'New title', 'Reference Us' );
+        }
+
+// Widget admin form
+    ?>
+    <p>
+    <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+    <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+    </p>
+    <?php
     }
 
-    // Widget update function
+// Widget update function
     public function update($new_instance, $old_instance) {
         $instance = array();
         $instance['title'] = !empty($new_instance['title']) ? strip_tags($new_instance['title']) : '';
